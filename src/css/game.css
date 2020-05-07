@@ -1,0 +1,23 @@
+.game {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    min-height: 360px;
+    background-color: aliceblue;
+}
+
+.game-board {
+    margin: auto;
+}
+
+.game-info {
+    margin-left: 20px;
+}
+
+.status {
+    min-width: 50%;
+    padding: 20px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: red;
+}
