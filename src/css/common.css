@@ -12,6 +12,10 @@ ul {
     text-align: center;
 }
 
+.margin-auto {
+  margin: auto;
+}
+
 .square {
     background: #fff;
     border: 1px solid #999;
