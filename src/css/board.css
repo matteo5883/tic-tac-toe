@@ -1,7 +1,39 @@
 .board {
     margin: auto;
-    width: 150px;
 }
+
+.x-symbol {
+    font-family: cursive;
+    background-color: #dc685a !important;
+    color: white;
+    opacity: 95%;
+}
+
+.o-symbol {
+    font-family: cursive;
+    background-color: #465BF4 !important;
+    color: white;
+    opacity: 95%;
+}
+
+.square {
+    background: aliceblue;
+    float: left;
+    font-size: 50px;
+    font-weight: bold;
+    line-height: 34px;
+    padding: 0;
+    text-align: center;
+    height: 100px;
+    width: 100px;
+    border-radius: 5px;
+    margin: 3px;
+}
+
+.square:focus {
+    outline: none;
+}
+
 
 .board-row:after {
     clear: both;

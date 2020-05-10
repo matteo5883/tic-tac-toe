@@ -10,6 +10,7 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+
 @media screen and (max-width: 600px) {
     .popup_inner {
         width: 100%;
@@ -22,14 +23,33 @@
 @media screen and (min-width: 600px) {
     .popup_inner {
         position: absolute;
-        left: 25%;
-        top: 25%;
-        max-width: 60%;
-        max-height: 70%;
+        left: 15%;
+        top: 15%;
+        max-width: 70%;
         padding: 30px;
         margin: auto;
+        border-radius: 20px;
         background: white;
     }
+}
+
+@media screen and (min-width: 1300px){
+    .popup_inner {
+        max-width: 50%;
+        left: 25%;
+    }
+}
+
+.popup-button {
+    min-width: 150px;
+    min-height: 50px;
+    font-family: cursive;
+    background: indianred;
+    border-width: 0;
+    border-radius: 5px;
+    font-size: large;
+    padding: 0px;
+    color: white;
 }
 
 h1 {
@@ -48,7 +68,6 @@ h1 {
 button {
     margin: auto;
     height: 35px;
-    width: 100px;
 }
 
 .popup-container span {

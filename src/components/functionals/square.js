@@ -1,8 +1,9 @@
 import React from "react";
 
 const square = props => {
+  const style = props.className + " square";
   return (
-    <button className="square" onClick={props.setValue}>
+    <button className={style} onClick={props.setValue}>
       {props.value}
     </button>
   );

@@ -1,14 +1,22 @@
 .game {
-    display: flex;
-    flex-direction: row;
+    display: block;
     margin: auto;
-    min-height: 360px;
-    background-color: aliceblue;
+    height: 100%;
+    font-size: 36px;
+    font-family: cursive;
+    text-align: center;
+
+    /*background css*/
+    background: url('../resources/sfondo_1.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .game-board {
-    margin: auto;
+    display: inline-grid;
 }
+
 
 .game-info {
     margin-left: 20px;
@@ -17,7 +25,5 @@
 .status {
     min-width: 50%;
     padding: 20px;
-    margin-bottom: 20px;
-    font-size: 18px;
-    color: red;
+    color: #dc685a;
 }

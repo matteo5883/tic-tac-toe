@@ -23,8 +23,10 @@ class Board extends React.Component {
 
   //render the single cell
   renderSquare(i) {
+    const symbol = this.state.squares[i];
+    const className = symbol != null ? (symbol === 'X' ? 'x-symbol' : 'o-symbol') : '';
     return (
-      <Square value={this.state.squares[i]} setValue={() => this.setValue(i)} />
+      <Square value={symbol} className={className} setValue={() => this.setValue(i)} />
     );
   }
 
