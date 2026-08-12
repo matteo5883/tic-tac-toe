@@ -1,29 +1,40 @@
 .game {
-    display: block;
-    margin: auto;
-    height: 100%;
-    font-size: 36px;
-    font-family: cursive;
-    text-align: center;
+  display: block;
+  margin: auto;
+  height: 100%;
+  font-size: 36px;
+  font-family: cursive;
+  text-align: center;
 
-    /*background css*/
-    background: url('../resources/sfondo_1.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
+  /*background css*/
+  background: url("/resources/sfondo_1.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .game-board {
-    display: inline-grid;
+  display: inline-grid;
 }
 
+.game-shell {
+  padding: 8px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.game-shell mat-card-content {
+  display: grid;
+  gap: 14px;
+}
 
 .game-info {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .status {
-    min-width: 50%;
-    padding: 20px;
-    color: #dc685a;
+  min-width: 50%;
+  padding: 20px;
+  color: #dc685a;
 }
