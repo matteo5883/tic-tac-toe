@@ -1,22 +1,27 @@
 html,
 body,
 app-root {
-  font:
-    14px "Century Gothic",
-    Futura,
-    sans-serif;
-  margin: 20px;
-  height: 100%;
+  margin: 0;
+  min-height: 100%;
+  font-family: "Avenir Next", "Trebuchet MS", "Century Gothic", sans-serif;
 }
 
-input {
-  color: red;
-  width: 100%;
+* {
+  box-sizing: border-box;
 }
 
-ol,
-ul {
-  padding-left: 30px;
+body {
+  min-height: 100dvh;
+  color: #112a40;
+  background:
+    radial-gradient(circle at 8% 12%, #f9fbff 0%, #f9fbff 20%, transparent 40%),
+    radial-gradient(
+      circle at 92% 86%,
+      #eef7ff 0%,
+      #eef7ff 18%,
+      transparent 42%
+    ),
+    linear-gradient(140deg, #f4f8ff 0%, #eef5ff 45%, #e9f2ff 100%);
 }
 
 .text-center {
@@ -32,13 +37,24 @@ ul {
 }
 
 .startGame {
-  margin: auto;
-  min-width: 150px;
-  min-height: 60px;
-  font-size: 32px !important;
-  padding: 0px;
+  margin: 0 auto;
+  min-width: 176px;
+  min-height: 56px;
+  border-radius: 14px;
+  font-size: 1.05rem !important;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .width200 {
   width: 200px;
+}
+
+@media (max-width: 680px) {
+  .startGame {
+    width: 100%;
+    max-width: 320px;
+    min-height: 52px;
+  }
 }
