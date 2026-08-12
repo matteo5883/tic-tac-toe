@@ -1,0 +1,36 @@
+<div class="popup">
+  <div class="container-fluid popup_inner">
+    <div class="row">
+      <img
+        class="margin-auto width200"
+        src="/resources/game_over.png"
+        alt="draw"
+      />
+    </div>
+
+    <div class="row">
+      <div class="col text-center">
+        <div class="margin-auto">
+          <button
+            mat-flat-button
+            color="primary"
+            class="popup-button"
+            (click)="newGame.emit()"
+          >
+            New Game
+          </button>
+        </div>
+      </div>
+      <div class="col text-center">
+        <button
+          mat-flat-button
+          color="warn"
+          class="popup-button"
+          (click)="closeGame.emit()"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

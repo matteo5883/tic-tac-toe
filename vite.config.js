@@ -1,9 +1,11 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from "vite";
+import angular from "@analogjs/vite-plugin-angular";
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [angular()],
   test: {
-    environment: 'jsdom'
-  }
+    environment: "jsdom",
+    globals: true,
+    setupFiles: ["src/test-setup.ts"],
+  },
 });

@@ -1,0 +1,29 @@
+<div class="game">
+  <mat-card class="game-board game-shell">
+    <mat-card-content>
+      <div class="status">{{ status }}</div>
+      <mat-divider></mat-divider>
+      <app-board
+        [nextSymbol]="nextSymbol"
+        [resetGameState]="resetGameState"
+        (updateSymbol)="updateSymbol($event)"
+        (declareWinner)="renderWinner($event)"
+        (resetGame)="setResetGameState($event)"
+        (declareDraw)="declareDraw()"
+      ></app-board>
+    </mat-card-content>
+  </mat-card>
+
+  <app-winner-popup
+    *ngIf="showPopup && winner"
+    [winner]="winner"
+    (newGame)="newGame()"
+    (closeGame)="closeGame.emit()"
+  ></app-winner-popup>
+
+  <app-draw-popup
+    *ngIf="showPopup && !winner"
+    (newGame)="newGame()"
+    (closeGame)="closeGame.emit()"
+  ></app-draw-popup>
+</div>

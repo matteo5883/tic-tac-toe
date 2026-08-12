@@ -1,0 +1,16 @@
+<app-pregame
+  *ngIf="page === 1; else gameView"
+  [player1]="player1"
+  [player2]="player2"
+  (player1Change)="setPlayer1($event)"
+  (player2Change)="setPlayer2($event)"
+  (start)="startGame()"
+></app-pregame>
+
+<ng-template #gameView>
+  <app-game
+    [player1]="player1"
+    [player2]="player2"
+    (closeGame)="newGame()"
+  ></app-game>
+</ng-template>

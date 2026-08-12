@@ -1,0 +1,46 @@
+<div class="container game">
+  <div class="row">
+    <h1>INSERT PLAYERS</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-4 text-right">Player 1:</div>
+    <div class="col-6">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>insert name</mat-label>
+        <input
+          matInput
+          placeholder="insert name"
+          [value]="player1"
+          (input)="onPlayer1Input($event)"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4 text-right">Player 2:</div>
+    <div class="col-6">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>insert name</mat-label>
+        <input
+          matInput
+          placeholder="insert name"
+          [value]="player2"
+          (input)="onPlayer2Input($event)"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <button
+      mat-raised-button
+      color="warn"
+      class="startGame"
+      (click)="onStart()"
+    >
+      START
+    </button>
+  </div>
+</div>
