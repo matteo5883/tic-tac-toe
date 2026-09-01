@@ -32,6 +32,7 @@ describe("PregameComponent", () => {
     const fixture = TestBed.createComponent(PregameComponent);
     const component = fixture.componentInstance;
     const emitSpy = vi.spyOn(component.player1Change, "emit");
+    fixture.detectChanges();
 
     const input = fixture.nativeElement.querySelectorAll(
       "input",
@@ -46,6 +47,7 @@ describe("PregameComponent", () => {
     const fixture = TestBed.createComponent(PregameComponent);
     const component = fixture.componentInstance;
     const emitSpy = vi.spyOn(component.player2Change, "emit");
+    fixture.detectChanges();
 
     const input = fixture.nativeElement.querySelectorAll(
       "input",
@@ -68,5 +70,29 @@ describe("PregameComponent", () => {
     button.click();
 
     expect(emitSpy).toHaveBeenCalled();
+  });
+
+  it("emits gameModeChange when mode changes", () => {
+    const fixture = TestBed.createComponent(PregameComponent);
+    const component = fixture.componentInstance;
+    const emitSpy = vi.spyOn(component.gameModeChange, "emit");
+
+    component.onModeChange("human-vs-bot");
+
+    expect(emitSpy).toHaveBeenCalledWith("human-vs-bot");
+  });
+
+  it("emits BOT assignment when bot player side changes", () => {
+    const fixture = TestBed.createComponent(PregameComponent);
+    const component = fixture.componentInstance;
+    component.gameMode = "human-vs-bot";
+
+    const player1Spy = vi.spyOn(component.player1Change, "emit");
+    const player2Spy = vi.spyOn(component.player2Change, "emit");
+
+    component.onBotPlayerChange("X");
+
+    expect(player1Spy).toHaveBeenCalledWith("BOT");
+    expect(player2Spy).not.toHaveBeenCalledWith("BOT");
   });
 });

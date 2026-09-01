@@ -1,0 +1,121 @@
+:root {
+  --font-sans: Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --bg-app: #0f172a;
+  --bg-app-mid: #111f35;
+  --bg-app-end: #0d1529;
+  --surface-primary: #1e293b;
+  --surface-secondary: #334155;
+  --surface-hover: #475569;
+  --overlay-dark: rgba(2, 6, 23, 0.66);
+
+  --brand-primary: #6366f1;
+  --brand-primary-strong: #4f46e5;
+  --toolbar-start: #4f46e5;
+  --toolbar-mid: #6366f1;
+  --toolbar-accent: #06b6d4;
+  --toolbar-text: #f8fafc;
+  --player-x: #06b6d4;
+  --player-x-strong: #0891b2;
+  --player-o: #f43f5e;
+  --player-o-strong: #e11d48;
+  --victory-emerald: #10b981;
+  --victory-emerald-soft: #34d399;
+  --draw-gold: #f59e0b;
+  --draw-gold-soft: #fbbf24;
+
+  --text-primary: #e2e8f0;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-heading: #f8fafc;
+  --text-heading-soft: #f1f5f9;
+
+  --border-soft: rgba(148, 163, 184, 0.22);
+  --border-medium: rgba(148, 163, 184, 0.24);
+  --border-strong: rgba(148, 163, 184, 0.32);
+
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+
+  --shadow-toolbar: 0 8px 24px rgba(3, 12, 28, 0.45);
+  --shadow-card: 0 18px 38px rgba(2, 6, 23, 0.52);
+  --shadow-modal: 0 24px 52px rgba(2, 6, 23, 0.58);
+  --shadow-interactive: 0 10px 20px rgba(2, 6, 23, 0.4);
+
+  --btn-primary-start: #7b84fa;
+  --btn-primary-end: #6a72f2;
+  --btn-primary-start-hover: #838cfb;
+  --btn-primary-end-hover: #737af3;
+  --btn-warn-start: #ff6f8e;
+  --btn-warn-end: #f65a7d;
+  --btn-warn-start-hover: #ff7795;
+  --btn-warn-end-hover: #f96284;
+  --btn-text-on-color: #f8fafc;
+  --btn-shadow-primary: 0 12px 28px rgba(99, 102, 241, 0.42);
+  --btn-shadow-warn: 0 12px 28px rgba(244, 63, 94, 0.36);
+  --btn-inset-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.24);
+
+  --transition-fast: 140ms ease;
+  --transition-base: 160ms ease;
+  --transition-soft: 180ms ease;
+}
+
+body.theme-dark {
+  color-scheme: dark;
+}
+
+body.theme-light {
+  color-scheme: light;
+
+  --bg-app: #f4f7fb;
+  --bg-app-mid: #eaf0f8;
+  --bg-app-end: #dee7f2;
+  --surface-primary: #ffffff;
+  --surface-secondary: #f3f7fc;
+  --surface-hover: #e4ecf7;
+  --overlay-dark: rgba(15, 23, 42, 0.28);
+
+  --brand-primary: #4f46e5;
+  --brand-primary-strong: #4338ca;
+  --toolbar-start: #dbeafe;
+  --toolbar-mid: #c7d2fe;
+  --toolbar-accent: #22d3ee;
+  --toolbar-text: #0b1220;
+  --player-x: #0891b2;
+  --player-x-strong: #0e7490;
+  --player-o: #e11d48;
+  --player-o-strong: #be123c;
+  --victory-emerald: #059669;
+  --victory-emerald-soft: #34d399;
+  --draw-gold: #d97706;
+  --draw-gold-soft: #f59e0b;
+
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --text-heading: #0b1220;
+  --text-heading-soft: #1e293b;
+
+  --border-soft: rgba(15, 23, 42, 0.1);
+  --border-medium: rgba(15, 23, 42, 0.14);
+  --border-strong: rgba(15, 23, 42, 0.22);
+
+  --shadow-toolbar: 0 8px 24px rgba(30, 41, 59, 0.25);
+  --shadow-card: 0 12px 30px rgba(15, 23, 42, 0.12);
+  --shadow-modal: 0 20px 44px rgba(15, 23, 42, 0.18);
+  --shadow-interactive: 0 10px 20px rgba(15, 23, 42, 0.18);
+
+  --btn-primary-start: #6a70f3;
+  --btn-primary-end: #5b63eb;
+  --btn-primary-start-hover: #7278f6;
+  --btn-primary-end-hover: #646cf0;
+  --btn-warn-start: #f97a98;
+  --btn-warn-end: #ee6486;
+  --btn-warn-start-hover: #fb84a1;
+  --btn-warn-end-hover: #f26f90;
+  --btn-text-on-color: #f8fafc;
+  --btn-shadow-primary: 0 10px 24px rgba(79, 70, 229, 0.32);
+  --btn-shadow-warn: 0 10px 24px rgba(225, 29, 72, 0.28);
+  --btn-inset-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}

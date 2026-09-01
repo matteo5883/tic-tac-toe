@@ -4,18 +4,53 @@
   display: grid;
   place-items: center;
   padding: 14px;
-  background: rgba(10, 30, 50, 0.55);
-  backdrop-filter: blur(4px);
+  background: var(--overlay-dark);
+  backdrop-filter: blur(6px);
   z-index: 30;
 }
 
 .popup_inner {
   width: min(94vw, 640px);
-  border-radius: 20px;
-  background: linear-gradient(160deg, #ffffff 0%, #f5f9ff 100%);
-  border: 1px solid rgba(9, 66, 120, 0.12);
-  box-shadow: 0 22px 46px rgba(10, 34, 58, 0.25);
-  padding: 24px 18px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--surface-primary) 98%, transparent) 0%,
+    color-mix(in srgb, var(--bg-app) 100%, transparent) 100%
+  );
+  border: 1px solid var(--border-medium);
+  box-shadow: var(--shadow-modal);
+  padding: 24px 18px 18px;
+  animation: fadeInUp 220ms ease;
+}
+
+.popup_inner--winner {
+  width: min(86vw, 460px);
+  aspect-ratio: 4 / 5;
+  max-height: 86dvh;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 18px 22px;
+}
+
+.popup_inner--winner::before {
+  margin-bottom: 12px;
+}
+
+.popup_inner--winner .row {
+  width: 100%;
+}
+
+.popup-row-message {
+  flex: 1;
+  display: grid;
+  place-items: center;
+}
+
+.popup-row-actions {
+  width: 100%;
 }
 
 .popup_inner::before {
@@ -25,23 +60,100 @@
   height: 6px;
   margin: 0 auto 8px;
   border-radius: 999px;
-  background: linear-gradient(90deg, #5f8ff2 0%, #74b5ff 100%);
+  background: linear-gradient(
+    90deg,
+    var(--brand-primary) 0%,
+    var(--player-x) 100%
+  );
 }
 
 .popup-button {
   min-width: 140px;
   min-height: 44px;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  color: var(--btn-text-on-color) !important;
+  --mdc-protected-button-container-color: transparent;
+  --mdc-filled-button-container-color: transparent;
+  background-color: transparent !important;
   font-size: 0.98rem;
   font-weight: 700;
   letter-spacing: 0.02em;
+  box-shadow: var(--btn-inset-highlight);
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background var(--transition-fast),
+    filter var(--transition-fast);
+}
+
+.popup-button.mat-primary {
+  border-color: color-mix(in srgb, var(--btn-primary-end) 72%, transparent);
+  background-image: linear-gradient(
+    150deg,
+    var(--btn-primary-start) 0%,
+    var(--btn-primary-end) 100%
+  ) !important;
+  box-shadow: var(--btn-shadow-primary), var(--btn-inset-highlight);
+}
+
+.popup-button.mat-warn {
+  border-color: color-mix(in srgb, var(--btn-warn-end) 72%, transparent);
+  background-image: linear-gradient(
+    150deg,
+    var(--btn-warn-start) 0%,
+    var(--btn-warn-end) 100%
+  ) !important;
+  box-shadow: var(--btn-shadow-warn), var(--btn-inset-highlight);
+}
+
+.popup-button:hover {
+  transform: translateY(-1px);
+  filter: saturate(1.07);
+}
+
+.popup-button.mat-primary:hover {
+  background-image: linear-gradient(
+    150deg,
+    var(--btn-primary-start-hover) 0%,
+    var(--btn-primary-end-hover) 100%
+  ) !important;
+  box-shadow:
+    0 14px 30px color-mix(in srgb, var(--btn-primary-end) 34%, transparent),
+    var(--btn-inset-highlight);
+}
+
+.popup-button.mat-warn:hover {
+  background-image: linear-gradient(
+    150deg,
+    var(--btn-warn-start-hover) 0%,
+    var(--btn-warn-end-hover) 100%
+  ) !important;
+  box-shadow:
+    0 14px 30px color-mix(in srgb, var(--btn-warn-end) 34%, transparent),
+    var(--btn-inset-highlight);
+}
+
+.popup-button:active {
+  transform: translateY(0);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.18);
 }
 
 h1 {
   margin: 0;
-  color: #143752;
+  color: var(--text-heading);
   font-size: clamp(1.35rem, 1.1rem + 1.2vw, 2rem);
   font-weight: 800;
+}
+
+.winner-message {
+  max-width: 100%;
+  padding: 0 8px;
+  text-align: center;
+  line-height: 1.18;
+  overflow-wrap: normal;
+  word-break: keep-all;
+  hyphens: none;
 }
 
 .popup .col {
@@ -56,13 +168,6 @@ h1 {
   align-items: center;
 }
 
-.popup img {
-  max-width: 120px;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
 @media (max-width: 600px) {
   .popup {
     padding: 8px;
@@ -70,8 +175,15 @@ h1 {
 
   .popup_inner {
     width: 100%;
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
     padding: 18px 12px;
+  }
+
+  .popup_inner--winner {
+    width: min(90vw, 360px);
+    min-height: 380px;
+    max-height: 84dvh;
+    padding: 20px 12px 16px;
   }
 
   .popup .col {
