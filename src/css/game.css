@@ -308,7 +308,7 @@
   border-color: color-mix(in srgb, var(--player-x) 68%, white) !important;
 }
 
-.game-shell ::ng-deep .mat-divider {
+.game-shell .mat-divider {
   border-top-color: var(--border-medium);
 }
 
