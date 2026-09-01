@@ -50,4 +50,36 @@ describe("SquareComponent", () => {
 
     expect(emitSpy).toHaveBeenCalled();
   });
+
+  it("uses type button to avoid form submission side effects", () => {
+    const fixture = TestBed.createComponent(SquareComponent);
+    fixture.detectChanges();
+
+    const button = fixture.nativeElement.querySelector(
+      "button",
+    ) as HTMLButtonElement;
+    expect(button.getAttribute("type")).toBe("button");
+  });
+
+  it("uses accessible label for empty square", () => {
+    const fixture = TestBed.createComponent(SquareComponent);
+    fixture.componentInstance.value = null;
+    fixture.detectChanges();
+
+    const button = fixture.nativeElement.querySelector(
+      "button",
+    ) as HTMLButtonElement;
+    expect(button.getAttribute("aria-label")).toBe("Empty square");
+  });
+
+  it("uses symbol as accessible label when occupied", () => {
+    const fixture = TestBed.createComponent(SquareComponent);
+    fixture.componentInstance.value = "X";
+    fixture.detectChanges();
+
+    const button = fixture.nativeElement.querySelector(
+      "button",
+    ) as HTMLButtonElement;
+    expect(button.getAttribute("aria-label")).toBe("X");
+  });
 });

@@ -30,6 +30,7 @@ export class BoardComponent implements OnChanges, OnDestroy, OnInit {
   @Output() declareDraw = new EventEmitter<void>();
 
   squares: Array<"X" | "O" | null> = Array(9).fill(null);
+  private currentSymbol: "X" | "O" = "X";
   private gameOver = false;
   private botMoveTimer: ReturnType<typeof setTimeout> | null = null;
   private readonly winningRows = [
@@ -44,6 +45,7 @@ export class BoardComponent implements OnChanges, OnDestroy, OnInit {
   ] as const;
 
   ngOnInit(): void {
+    this.currentSymbol = this.nextSymbol;
     this.scheduleBotMove();
   }
 
@@ -52,6 +54,10 @@ export class BoardComponent implements OnChanges, OnDestroy, OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    if (changes["nextSymbol"]) {
+      this.currentSymbol = changes["nextSymbol"].currentValue;
+    }
+
     if (changes["resetVersion"] && !changes["resetVersion"].firstChange) {
       this.resetBoardState();
     }
@@ -76,12 +82,12 @@ export class BoardComponent implements OnChanges, OnDestroy, OnInit {
     }
 
     const squares = [...this.squares];
-    squares[index] = this.nextSymbol;
+    squares[index] = this.currentSymbol;
     this.squares = squares;
 
-    const playedSymbol = this.nextSymbol;
+    const playedSymbol = this.currentSymbol;
     const upcomingSymbol: "X" | "O" = playedSymbol === "O" ? "X" : "O";
-    this.nextSymbol = upcomingSymbol;
+    this.currentSymbol = upcomingSymbol;
     this.updateSymbol.emit(upcomingSymbol);
     this.checkVictory(squares, playedSymbol);
   }
@@ -119,7 +125,7 @@ export class BoardComponent implements OnChanges, OnDestroy, OnInit {
     this.clearBotTimer();
     this.squares = Array(9).fill(null);
     this.gameOver = false;
-    this.nextSymbol = this.resetStarterSymbol;
+    this.currentSymbol = this.resetStarterSymbol;
     this.updateSymbol.emit(this.resetStarterSymbol);
     this.scheduleBotMove();
   }
@@ -149,7 +155,7 @@ export class BoardComponent implements OnChanges, OnDestroy, OnInit {
   }
 
   private isBotTurn(): boolean {
-    return this.botEnabled && this.nextSymbol === this.botSymbol;
+    return this.botEnabled && this.currentSymbol === this.botSymbol;
   }
 
   private selectBotMove(): number | null {

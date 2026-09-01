@@ -1,7 +1,14 @@
-<div class="popup">
+<div
+  class="popup"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="winner-title"
+>
   <div class="container-fluid popup_inner popup_inner--winner">
     <div class="row popup-row-message">
-      <h1 class="winner-message">Congratulations {{ winner }}</h1>
+      <h1 id="winner-title" class="winner-message">
+        Congratulations {{ winner }}
+      </h1>
     </div>
 
     <div class="row popup-row-actions">

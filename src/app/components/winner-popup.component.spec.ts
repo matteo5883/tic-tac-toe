@@ -49,4 +49,19 @@ describe("WinnerPopupComponent", () => {
 
     expect(emitSpy).toHaveBeenCalled();
   });
+
+  it("exposes dialog semantics and title association", () => {
+    const fixture = TestBed.createComponent(WinnerPopupComponent);
+    fixture.componentInstance.winner = "Alice";
+    fixture.detectChanges();
+
+    const host = fixture.nativeElement as HTMLElement;
+    const popup = host.querySelector(".popup") as HTMLElement;
+    const title = host.querySelector("#winner-title") as HTMLElement;
+
+    expect(popup.getAttribute("role")).toBe("dialog");
+    expect(popup.getAttribute("aria-modal")).toBe("true");
+    expect(popup.getAttribute("aria-labelledby")).toBe("winner-title");
+    expect(title.textContent).toContain("Congratulations Alice");
+  });
 });

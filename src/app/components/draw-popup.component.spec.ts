@@ -40,4 +40,18 @@ describe("DrawPopupComponent", () => {
 
     expect(emitSpy).toHaveBeenCalled();
   });
+
+  it("exposes dialog semantics and title association", () => {
+    const fixture = TestBed.createComponent(DrawPopupComponent);
+    fixture.detectChanges();
+
+    const host = fixture.nativeElement as HTMLElement;
+    const popup = host.querySelector(".popup") as HTMLElement;
+    const title = host.querySelector("#draw-title") as HTMLElement;
+
+    expect(popup.getAttribute("role")).toBe("dialog");
+    expect(popup.getAttribute("aria-modal")).toBe("true");
+    expect(popup.getAttribute("aria-labelledby")).toBe("draw-title");
+    expect(title.textContent).toContain("It's a draw");
+  });
 });

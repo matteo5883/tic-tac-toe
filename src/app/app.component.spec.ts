@@ -97,4 +97,14 @@ describe("AppComponent", () => {
     expect(component.player2).toBe("BOT");
     expect(component.page).toBe(2);
   });
+
+  it("does not set aria-pressed on theme switch", () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+
+    const host = fixture.nativeElement as HTMLElement;
+    const slideToggle = host.querySelector("mat-slide-toggle") as HTMLElement;
+
+    expect(slideToggle.hasAttribute("aria-pressed")).toBe(false);
+  });
 });

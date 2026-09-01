@@ -6,7 +6,6 @@
       class="theme-toggle"
       [checked]="theme === 'light'"
       (change)="setTheme($event.checked ? 'light' : 'dark')"
-      [attr.aria-pressed]="theme === 'light'"
       [attr.aria-label]="
         theme === 'dark' ? 'Attiva tema chiaro' : 'Attiva tema scuro'
       "

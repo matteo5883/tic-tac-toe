@@ -21,12 +21,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Match header updated with an X icon close button.
 - Mode labels updated in the UI from Human vs ... to 2 Player / 1 Player.
 - Typography weight aligned to bold for pregame controls.
+- Board turn management refactored to avoid mutating Angular @Input state directly.
 
 ### Fixed
 
 - Fixed race conditions between rounds that caused out-of-turn BOT moves in the second game.
 - Fixed BOT opening move trigger when BOT is the starting player.
 - Improved icon centering in the match close button.
+- Added proper modal dialog semantics and title references to winner and draw popups.
+- Removed conflicting aria-pressed semantics from the theme switch.
+- Added explicit button type and accessible labels to board squares.
 
 ### Removed
 

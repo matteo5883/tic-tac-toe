@@ -31,7 +31,7 @@ describe("BoardComponent", () => {
     component.setValue(0);
 
     expect(component.squares[0]).toBe("X");
-    expect(component.nextSymbol).toBe("O");
+    expect(component.nextSymbol).toBe("X");
     expect(updateSpy).toHaveBeenCalledWith("O");
   });
 
@@ -86,7 +86,7 @@ describe("BoardComponent", () => {
     });
 
     expect(component.squares.every((cell) => cell === null)).toBe(true);
-    expect(component.nextSymbol).toBe("O");
+    expect(component.nextSymbol).toBe("X");
     expect(updateSpy).toHaveBeenCalledWith("O");
   });
 
@@ -97,6 +97,9 @@ describe("BoardComponent", () => {
     component.botEnabled = true;
     component.botSymbol = "O";
     component.nextSymbol = "O";
+    component.ngOnChanges({
+      nextSymbol: new SimpleChange("X", "O", false),
+    });
     component.setValue(0);
 
     expect(component.squares[0]).toBeNull();
@@ -182,6 +185,7 @@ describe("BoardComponent", () => {
 
     const fixture = TestBed.createComponent(BoardComponent);
     const component = fixture.componentInstance;
+    fixture.detectChanges();
 
     component.botEnabled = true;
     component.botSymbol = "O";
