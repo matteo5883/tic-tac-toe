@@ -1,18 +1,10 @@
 <div class="popup">
-  <div class="container-fluid popup_inner">
-    <div class="row">
-      <img
-        class="margin-auto width200"
-        src="/resources/winner.gif"
-        alt="winner"
-      />
+  <div class="container-fluid popup_inner popup_inner--winner">
+    <div class="row popup-row-message">
+      <h1 class="winner-message">Congratulations {{ winner }}</h1>
     </div>
 
-    <div class="row">
-      <h1>Congratulations {{ winner }}</h1>
-    </div>
-
-    <div class="row">
+    <div class="row popup-row-actions">
       <div class="col text-center">
         <div class="margin-auto">
           <button

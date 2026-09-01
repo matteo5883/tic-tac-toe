@@ -1,6 +1,19 @@
 <div class="container game pregame-screen">
   <div class="row">
-    <h1 class="pregame-title">INSERT PLAYERS</h1>
+    <h1 class="pregame-title">SETUP MATCH</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-4 text-right">Mode:</div>
+    <div class="col-6">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>game mode</mat-label>
+        <mat-select [value]="gameMode" (valueChange)="onModeChange($event)">
+          <mat-option value="human-vs-human">2 Player</mat-option>
+          <mat-option value="human-vs-bot">1 Player</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
   </div>
 
   <div class="row">
@@ -11,7 +24,8 @@
         <input
           matInput
           placeholder="insert name"
-          [value]="player1"
+          [value]="isBotPlayer1 ? 'BOT' : player1"
+          [disabled]="isBotPlayer1"
           (input)="onPlayer1Input($event)"
         />
       </mat-form-field>
@@ -26,12 +40,48 @@
         <input
           matInput
           placeholder="insert name"
-          [value]="player2"
+          [value]="isBotPlayer2 ? 'BOT' : player2"
+          [disabled]="isBotPlayer2"
           (input)="onPlayer2Input($event)"
         />
       </mat-form-field>
     </div>
   </div>
+
+  @if (gameMode === "human-vs-bot") {
+    <div class="row">
+      <div class="col-4 text-right">BOT player:</div>
+      <div class="col-6">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>bot side</mat-label>
+          <mat-select
+            [value]="botPlayer"
+            (valueChange)="onBotPlayerChange($event)"
+          >
+            <mat-option value="X">Player 1 (X)</mat-option>
+            <mat-option value="O">Player 2 (O)</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4 text-right">Difficulty:</div>
+      <div class="col-6">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>difficulty level</mat-label>
+          <mat-select
+            [value]="botDifficulty"
+            (valueChange)="onDifficultyChange($event)"
+          >
+            <mat-option value="easy">Easy</mat-option>
+            <mat-option value="normal">Normal</mat-option>
+            <mat-option value="hard">Hard</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  }
 
   <div class="row">
     <button

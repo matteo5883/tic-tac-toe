@@ -3,7 +3,7 @@ body,
 app-root {
   margin: 0;
   min-height: 100%;
-  font-family: "Avenir Next", "Trebuchet MS", "Century Gothic", sans-serif;
+  font-family: var(--font-sans);
 }
 
 * {
@@ -12,16 +12,135 @@ app-root {
 
 body {
   min-height: 100dvh;
-  color: #112a40;
+  color: var(--text-primary);
   background:
-    radial-gradient(circle at 8% 12%, #f9fbff 0%, #f9fbff 20%, transparent 40%),
     radial-gradient(
-      circle at 92% 86%,
-      #eef7ff 0%,
-      #eef7ff 18%,
+      circle at 10% 10%,
+      rgba(99, 102, 241, 0.28) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 90% 86%,
+      rgba(6, 182, 212, 0.2) 0%,
       transparent 42%
     ),
-    linear-gradient(140deg, #f4f8ff 0%, #eef5ff 45%, #e9f2ff 100%);
+    linear-gradient(
+      145deg,
+      var(--bg-app) 0%,
+      var(--bg-app-mid) 50%,
+      var(--bg-app-end) 100%
+    );
+}
+
+.app-shell {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  height: 64px;
+  color: var(--toolbar-text) !important;
+  --mat-toolbar-container-background-color: transparent;
+  --mat-toolbar-container-text-color: var(--toolbar-text);
+  --mdc-filled-text-field-label-text-color: var(--toolbar-text);
+  background: linear-gradient(
+    90deg,
+    var(--toolbar-start) 0%,
+    var(--toolbar-mid) 45%,
+    var(--toolbar-accent) 100%
+  ) !important;
+  box-shadow: var(--shadow-toolbar);
+}
+
+.toolbar-title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--toolbar-text);
+}
+
+.toolbar-spacer {
+  flex: 1;
+}
+
+.theme-toggle {
+  color: var(--toolbar-text);
+  transition:
+    transform var(--transition-fast),
+    filter var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+  filter: drop-shadow(0 8px 16px rgba(2, 6, 23, 0.28));
+}
+
+.theme-toggle .theme-icon {
+  margin-left: 8px;
+  font-size: 1.15rem;
+  width: 1.15rem;
+  height: 1.15rem;
+  line-height: 1.15rem;
+}
+
+.theme-toggle.mat-mdc-slide-toggle .mdc-switch {
+  --mdc-switch-selected-track-color: color-mix(
+    in srgb,
+    var(--draw-gold) 62%,
+    white
+  );
+  --mdc-switch-selected-handle-color: color-mix(
+    in srgb,
+    var(--draw-gold) 88%,
+    white
+  );
+  --mdc-switch-unselected-track-color: color-mix(
+    in srgb,
+    var(--toolbar-text) 34%,
+    transparent
+  );
+  --mdc-switch-unselected-handle-color: var(--toolbar-text);
+  --mdc-switch-selected-focus-track-color: color-mix(
+    in srgb,
+    var(--draw-gold) 62%,
+    white
+  );
+  --mdc-switch-selected-hover-track-color: color-mix(
+    in srgb,
+    var(--draw-gold) 68%,
+    white
+  );
+  --mdc-switch-selected-pressed-track-color: color-mix(
+    in srgb,
+    var(--draw-gold) 68%,
+    white
+  );
+  --mdc-switch-unselected-focus-track-color: color-mix(
+    in srgb,
+    var(--toolbar-text) 40%,
+    transparent
+  );
+  --mdc-switch-unselected-hover-track-color: color-mix(
+    in srgb,
+    var(--toolbar-text) 40%,
+    transparent
+  );
+  --mdc-switch-unselected-pressed-track-color: color-mix(
+    in srgb,
+    var(--toolbar-text) 40%,
+    transparent
+  );
+}
+
+.view-container {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 16px;
 }
 
 .text-center {
@@ -40,18 +159,99 @@ body {
   margin: 0 auto;
   min-width: 176px;
   min-height: 56px;
-  border-radius: 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid color-mix(in srgb, var(--btn-primary-end) 70%, transparent);
+  color: var(--btn-text-on-color) !important;
+  --mdc-protected-button-container-color: transparent;
+  --mdc-filled-button-container-color: transparent;
+  background-color: transparent !important;
+  background-image: linear-gradient(
+    150deg,
+    var(--btn-primary-start) 0%,
+    var(--btn-primary-end) 100%
+  ) !important;
+  box-shadow: var(--btn-shadow-primary), var(--btn-inset-highlight);
   font-size: 1.05rem !important;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    filter var(--transition-base),
+    background var(--transition-base);
+}
+
+.startGame:hover {
+  transform: translateY(-1px);
+  background-image: linear-gradient(
+    150deg,
+    var(--btn-primary-start-hover) 0%,
+    var(--btn-primary-end-hover) 100%
+  ) !important;
+  box-shadow:
+    0 14px 30px color-mix(in srgb, var(--btn-primary-end) 38%, transparent),
+    var(--btn-inset-highlight);
+  filter: saturate(1.05);
+}
+
+.startGame:active {
+  transform: translateY(0);
+  box-shadow:
+    0 8px 18px color-mix(in srgb, var(--btn-primary-end) 34%, transparent),
+    inset 0 2px 6px rgba(0, 0, 0, 0.16);
 }
 
 .width200 {
   width: 200px;
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseSoft {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
 @media (max-width: 680px) {
+  .app-toolbar {
+    height: 58px;
+  }
+
+  .toolbar-title {
+    font-size: 16px;
+  }
+
+  .theme-toggle {
+    transform: scale(0.93);
+  }
+
+  .theme-toggle .theme-icon {
+    margin-left: 6px;
+    font-size: 1rem;
+    width: 1rem;
+    height: 1rem;
+    line-height: 1rem;
+  }
+
+  .view-container {
+    padding: 10px;
+  }
+
   .startGame {
     width: 100%;
     max-width: 320px;

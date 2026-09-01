@@ -1,29 +1,73 @@
 <div class="game">
+  <section class="match-header">
+    <section class="score-panel">
+      <div class="score-item score-player1">
+        <span class="score-label">{{ firstPlayerName }}</span>
+        <span class="score-value">{{ player1Score }}</span>
+      </div>
+      <div class="score-item score-draw">
+        <span class="score-label">Draw</span>
+        <span class="score-value">{{ drawScore }}</span>
+      </div>
+      <div class="score-item score-player2">
+        <span class="score-label">{{ secondPlayerName }}</span>
+        <span class="score-value">{{ player2Score }}</span>
+      </div>
+    </section>
+    <button
+      mat-icon-button
+      color="warn"
+      class="close-match"
+      aria-label="Close match"
+      (click)="stopMatch()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </section>
+
   <mat-card class="game-board game-shell">
     <mat-card-content>
+      <section class="turn-panel">
+        <div class="turn-title">Current Turn</div>
+        <div class="player-chips">
+          <div class="player-chip player-x" [class.active]="nextSymbol === 'X'">
+            <span class="chip-symbol">X</span>
+            <span class="chip-name">{{ firstPlayerName }}</span>
+          </div>
+          <div class="player-chip player-o" [class.active]="nextSymbol === 'O'">
+            <span class="chip-symbol">O</span>
+            <span class="chip-name">{{ secondPlayerName }}</span>
+          </div>
+        </div>
+      </section>
       <div class="status">{{ status }}</div>
       <mat-divider></mat-divider>
       <app-board
         [nextSymbol]="nextSymbol"
-        [resetGameState]="resetGameState"
+        [resetVersion]="resetVersion"
+        [resetStarterSymbol]="startingSymbol"
+        [botEnabled]="botEnabled"
+        [botSymbol]="botSymbol"
+        [botDifficulty]="botDifficulty"
         (updateSymbol)="updateSymbol($event)"
         (declareWinner)="renderWinner($event)"
-        (resetGame)="setResetGameState($event)"
         (declareDraw)="declareDraw()"
       ></app-board>
     </mat-card-content>
   </mat-card>
 
-  <app-winner-popup
-    *ngIf="showPopup && winner"
-    [winner]="winner"
-    (newGame)="newGame()"
-    (closeGame)="closeGame.emit()"
-  ></app-winner-popup>
+  @if (showPopup && winner) {
+    <app-winner-popup
+      [winner]="winner"
+      (newGame)="newGame()"
+      (closeGame)="closeGame.emit()"
+    ></app-winner-popup>
+  }
 
-  <app-draw-popup
-    *ngIf="showPopup && !winner"
-    (newGame)="newGame()"
-    (closeGame)="closeGame.emit()"
-  ></app-draw-popup>
+  @if (showPopup && !winner) {
+    <app-draw-popup
+      (newGame)="newGame()"
+      (closeGame)="closeGame.emit()"
+    ></app-draw-popup>
+  }
 </div>

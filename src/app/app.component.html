@@ -1,16 +1,49 @@
-<app-pregame
-  *ngIf="page === 1; else gameView"
-  [player1]="player1"
-  [player2]="player2"
-  (player1Change)="setPlayer1($event)"
-  (player2Change)="setPlayer2($event)"
-  (start)="startGame()"
-></app-pregame>
+<div class="app-shell">
+  <mat-toolbar color="primary" class="app-toolbar">
+    <span class="toolbar-title">Tic-Tac-Toe Neon Arena</span>
+    <span class="toolbar-spacer"></span>
+    <mat-slide-toggle
+      class="theme-toggle"
+      [checked]="theme === 'light'"
+      (change)="setTheme($event.checked ? 'light' : 'dark')"
+      [attr.aria-pressed]="theme === 'light'"
+      [attr.aria-label]="
+        theme === 'dark' ? 'Attiva tema chiaro' : 'Attiva tema scuro'
+      "
+      [attr.title]="
+        theme === 'dark' ? 'Passa a tema chiaro' : 'Passa a tema scuro'
+      "
+    >
+      <mat-icon class="theme-icon" aria-hidden="true">
+        {{ theme === "light" ? "light_mode" : "dark_mode" }}
+      </mat-icon>
+    </mat-slide-toggle>
+  </mat-toolbar>
 
-<ng-template #gameView>
-  <app-game
-    [player1]="player1"
-    [player2]="player2"
-    (closeGame)="newGame()"
-  ></app-game>
-</ng-template>
+  <main class="view-container">
+    @if (page === 1) {
+      <app-pregame
+        [player1]="player1"
+        [player2]="player2"
+        [gameMode]="gameMode"
+        [botPlayer]="botPlayer"
+        [botDifficulty]="botDifficulty"
+        (player1Change)="setPlayer1($event)"
+        (player2Change)="setPlayer2($event)"
+        (gameModeChange)="setGameMode($event)"
+        (botPlayerChange)="setBotPlayer($event)"
+        (botDifficultyChange)="setBotDifficulty($event)"
+        (start)="startGame()"
+      ></app-pregame>
+    } @else {
+      <app-game
+        [player1]="player1"
+        [player2]="player2"
+        [botEnabled]="gameMode === 'human-vs-bot'"
+        [botSymbol]="botPlayer"
+        [botDifficulty]="botDifficulty"
+        (closeGame)="newGame()"
+      ></app-game>
+    }
+  </main>
+</div>
